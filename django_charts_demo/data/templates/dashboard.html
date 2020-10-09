@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block page_content %}
+    <div class="container">
+        <div class="row mb-4 mt-4">
+            <div class="col"
+                <div class="card-deck">
+                    {% for chart in charts %}
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container" style="height:150; width:150">
+                                    {{ chart.html|safe }}
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:2 %}
+                            <div class="w-100 d-none d-sm-block d-md-none mb-4"><!-- wrap every 2 on sm--></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:3 %}
+                            <div class="w-100 d-none d-md-block d-lg-none mb-4"><!-- wrap every 3 on md--></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="w-100 d-none d-lg-block d-xl-none mb-4"><!-- wrap every 4 on lg--></div>
+                        {% endif %}
+                        {% if forloop.counter|divisibleby:5 %}
+                            <div class="w-100 d-none d-xl-block mb-4"><!-- wrap every 5 on xl--></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_scripts %}
+    {% for chart in charts %}
+        {{ chart.js|safe }}
+    {% endfor %}
+{% endblock %}
