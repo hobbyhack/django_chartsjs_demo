@@ -1,5 +1,6 @@
 import pandas as pd
 from .models import Purchase
+from datetime import datetime
 
 # dataset from https://www.kaggle.com/aungpyaeap/supermarket-sales
 # headers changed and invoice number col removed
